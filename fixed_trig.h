@@ -10,8 +10,7 @@
  * * This header provides fast, deterministic trigonometric operations (sin, cos, tan)
  * for systems lacking a hardware Floating Point Unit (FPU). All calculations use
  * signed 32-bit integers in Q16.16 format (16 bits for integer, 16 bits for fraction).
-
- @author M4ximumpizza
+ * @author M4ximumpizza
  */
 
 /* =========================================================================
