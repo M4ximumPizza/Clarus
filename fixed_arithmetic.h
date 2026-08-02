@@ -503,7 +503,6 @@ static inline q1_15_t q1_sub(q1_15_t a, q1_15_t b) {
 
 static inline q1_15_t q1_mul(q1_15_t a, q1_15_t b) {
     int32_t product = (int32_t)a * (int32_t)b;
-    /* BUG FIX: Cast to int64_t BEFORE left-shifting to avoid undefined behavior */
     const int64_t MAX_UNSHIFTED = ((int64_t)INT16_MAX) << Q1_SHIFT;
     const int64_t MIN_UNSHIFTED = -(((int64_t)INT16_MAX + 1LL) << Q1_SHIFT);
 
@@ -527,7 +526,6 @@ static inline bool q1_div(q1_15_t a, q1_15_t b, q1_15_t *result) {
         if (final_div > INT16_MAX) {
             *result = INT16_MAX;
         } else if (final_div < INT16_MIN) {
-            /* BUG FIX: Use INT16_MIN instead of magic number 0x8000 */
             *result = INT16_MIN;
         } else {
             *result = (q1_15_t)final_div;
@@ -556,7 +554,6 @@ static inline q4_12_t q4_sub(q4_12_t a, q4_12_t b) {
 
 static inline q4_12_t q4_mul(q4_12_t a, q4_12_t b) {
     int32_t product = (int32_t)a * (int32_t)b;
-    /* BUG FIX: Cast to int64_t BEFORE left-shifting to avoid undefined behavior */
     const int64_t MAX_UNSHIFTED = ((int64_t)INT16_MAX) << Q4_SHIFT;
     const int64_t MIN_UNSHIFTED = -(((int64_t)INT16_MAX + 1LL) << Q4_SHIFT);
 
@@ -580,7 +577,6 @@ static inline bool q4_div(q4_12_t a, q4_12_t b, q4_12_t *result) {
         if (final_div > INT16_MAX) {
             *result = INT16_MAX;
         } else if (final_div < INT16_MIN) {
-            /* BUG FIX: Use INT16_MIN instead of magic number 0x8000 */
             *result = INT16_MIN;
         } else {
             *result = (q4_12_t)final_div;
